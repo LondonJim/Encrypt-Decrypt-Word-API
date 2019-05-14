@@ -17,4 +17,13 @@ public class WordController {
         return encryptWord;
     }
 
+    @RequestMapping("/decrypt")
+    public DecryptWord decodeWord(@RequestParam Map<String,String> requestParams) throws Exception {
+        String wordToDecrypt=requestParams.get("wordToDecrypt");
+        String createdKey=requestParams.get("key");
+
+        DecryptWord decryptWord = new DecryptWord();
+        decryptWord.decrypt(wordToDecrypt, createdKey);
+        return decryptWord;
+    }
 }
