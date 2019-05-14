@@ -21,21 +21,21 @@ plugins {
     // Apply the application plugin to add support for building an application
     id 'application'
 
-    
+
 }
 
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 bootJar {
-    baseName = 'beer'
+    baseName = 'WordCrypt'
     version =  '0.1.0'
 }
 
 jar {
     manifest {
         attributes(
-                'Main-Class': 'main.beer.App'
+                'Main-Class': 'main.wordcrypt.App'
         )
     }
     from {configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
@@ -56,10 +56,11 @@ dependencies {
     // This dependency is found on compile classpath of this component and consumers.
     implementation 'com.google.guava:guava:27.0.1-jre'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'com.google.code.gson:gson:2.8.5'
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 // Define the main class for the application
-mainClassName = 'beer.App'
+mainClassName = 'wordcrypt.App'
